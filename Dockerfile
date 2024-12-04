@@ -3,17 +3,17 @@ FROM python:3.13.0a2-alpine
 
 # Install python and pip
 RUN apk add --no-cache --update python3 py3-pip bash
-ADD ./webapp/requirements.txt /tmp/requirements.txt
+ADD ./webapp/requirements.txt /tmp/requirementss.txt
 
 # Install dependencies
-RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
+RUN pip3 install --no-cache-dir -q -r /tmp/requirementss.txt
 
 # Add our code
 ADD ./webapp /opt/webapp/
 WORKDIR /opt/webapp
 
 # Expose is NOT supported by Heroku
-# EXPOSE 5000 		
+EXPOSE 5000 		
 
 # Run the image as a non-root user
 RUN adduser -D myuser
